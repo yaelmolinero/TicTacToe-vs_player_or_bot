@@ -66,7 +66,7 @@ def is_winner(player='O', size: int = 3):
             return win
 
     ########### Comprobar en diagonal ###########
-    # left-down to right-up -> /
+    # left-up to right-down -> \
     win = True
     for pos in range(size):
         if game[pos][pos] != player:
@@ -75,9 +75,10 @@ def is_winner(player='O', size: int = 3):
     if win:
         return win
 
-    # left-up to right-down -> \
-    for pos in range(size - 1, 0, -1):
-        if game[pos][pos] != player:
+    # left-down to right-up -> /
+    win = True
+    for pos in range(size):
+        if game[pos][abs(pos - (size-1))] != player:
             win = False
             break
     if win:
